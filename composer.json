@@ -115,6 +115,7 @@
         "spryker/configurable-bundle-carts-rest-api": "^0.1.3",
         "spryker/configurable-bundles-products-resource-relationship": "^1.1.0",
         "spryker/configurable-bundles-rest-api": "^1.1.0",
+        "spryker/console": "^4.13",
         "spryker/content-banners-rest-api": "^2.2.0",
         "spryker/content-product-abstract-lists-rest-api": "^1.2.0",
         "spryker/customer-access-rest-api": "^1.1.2",
