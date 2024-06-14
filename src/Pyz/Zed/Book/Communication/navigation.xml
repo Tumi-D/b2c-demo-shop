@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<navigation xmlns="http://schema.spryker.com/navigation-01"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://schema.spryker.com/navigation-01 http://schema.spryker.com/navigation-01/navigation-01.xsd">
+
+    <pages>
+        <page name="Book Management" route="book-list" isVisible="true">
+            <label>Book Management</label>
+            <title>Book Management</title>
+            <acl>book.plugin::gui</acl>
+            <items>
+                <item name="list-books" route="book-list" isVisible="true">
+                    <label>List Books</label>
+                    <title>List Books</title>
+                    <acl>book.plugin::gui</acl>
+                </item>
+                <item name="create-book" route="book-create" isVisible="true">
+                    <label>Create Book</label>
+                    <title>Create Book</title>
+                    <acl>book.plugin::gui</acl>
+                </item>
+            </items>
+        </page>
+    </pages>
+</navigation>

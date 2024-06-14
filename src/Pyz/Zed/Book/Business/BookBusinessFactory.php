@@ -1,4 +1,5 @@
 <?php
+
 namespace Pyz\Zed\Book\Business;
 
 use Pyz\Zed\Book\Business\Model\BookReader;

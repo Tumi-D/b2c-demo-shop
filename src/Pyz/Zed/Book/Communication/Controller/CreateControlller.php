@@ -1,5 +1,4 @@
 <?php
-
 namespace Pyz\Zed\Book\Communication\Controller;
 
 use Generated\Shared\Transfer\BookTransfer;

@@ -1,0 +1,10 @@
+{% extends '@Book/Layout/default.twig' %}
+
+{% block book_content %}
+    <h1>View Book</h1>
+    <p>Name: {{ book.name }}</p>
+    <p>Description: {{ book.description }}</p>
+    <p>Publication Date: {{ book.publication_date|date('Y-m-d') }}</p>
+
+    <a href="{{ url('book-list') }}">Back to List</a>
+{% endblock %}

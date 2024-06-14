@@ -1,0 +1,38 @@
+{% extends '@Gui/Layout/layout.twig' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Book Management</h1>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Publication Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in books %}
+                            <tr>
+                                <td>{{ book.getIdBook() }}</td>
+                                <td>{{ book.getName() }}</td>
+                                <td>{{ book.getDescription() }}</td>
+                                <td>{{ book.getPublicationDate()|date('Y-m-d') }}</td>
+                                <td>
+                                    <a href="{{ url('book-detail', {'id': book.getIdBook()}) }}" class="btn btn-sm btn-info">Detail</a>
+                                    <a href="{{ url('book-edit', {'id': book.getIdBook()}) }}" class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="{{ url('book-delete', {'id': book.getIdBook()}) }}" class="btn btn-sm btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

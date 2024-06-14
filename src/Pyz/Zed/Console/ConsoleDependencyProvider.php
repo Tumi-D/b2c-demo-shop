@@ -163,6 +163,11 @@ use Spryker\Zed\ZedNavigation\Communication\Console\BuildNavigationConsole;
 use Spryker\Zed\ZedNavigation\Communication\Console\RemoveNavigationCacheConsole;
 use SprykerSdk\Zed\ComposerConstrainer\Communication\Console\ComposerConstraintConsole;
 use SprykerShop\Zed\DateTimeConfiguratorPageExample\Communication\Console\DateTimeProductConfiguratorBuildFrontendConsole;
+// use Spryker\Zed\CodeGenerator\Communication\Console\BundleCodeGeneratorConsole;
+// use Spryker\Zed\CodeGenerator\Communication\Console\BundleYvesCodeGeneratorConsole;
+// use Spryker\Zed\CodeGenerator\Communication\Console\BundleZedCodeGeneratorConsole;
+// use Spryker\Zed\CodeGenerator\Communication\Console\BundleClientCodeGeneratorConsole;
+// use Spryker\Zed\CodeGenerator\Communication\Console\BundleSharedCodeGeneratorConsole;
 
 /**
  * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
@@ -409,12 +414,29 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new MessageBrokerAwsSnsTopicsCreatorConsole();
             $commands[] = new MessageBrokerSqsToSnsSubscriberConsole();
 
+                // if (class_exists(BundleCodeGeneratorConsole::class)) {
+                //     $commands[] = new BundleCodeGeneratorConsole();
+                // }
+                // if (class_exists(BundleYvesCodeGeneratorConsole::class)) {
+                //     $commands[] = new BundleYvesCodeGeneratorConsole();
+                // }
+                // if (class_exists(BundleZedCodeGeneratorConsole::class)) {
+                //     $commands[] = new BundleZedCodeGeneratorConsole();
+                // }
+                // if (class_exists(BundleClientCodeGeneratorConsole::class)) {
+                //     $commands[] = new BundleClientCodeGeneratorConsole();
+                // }
+                // if (class_exists(BundleSharedCodeGeneratorConsole::class)) {
+                //     $commands[] = new BundleSharedCodeGeneratorConsole();
+                // }
+
             if (class_exists(SecurityCheckerCommand::class)) {
                 $commands[] = new SecurityCheckerCommand();
             }
 
             $commands[] = new MaintenanceEnableConsole();
             $commands[] = new MaintenanceDisableConsole();
+            
         }
 
         return $commands;

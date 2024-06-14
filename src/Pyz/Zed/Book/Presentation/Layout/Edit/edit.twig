@@ -1,0 +1,20 @@
+{% extends '@Book/Layout/default.twig' %}
+
+{% block book_content %}
+    <h1>Edit Book</h1>
+
+    <form method="post" action="{{ url('book-edit', {'id': book.id}) }}">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ book.name }}"><br><br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description">{{ book.description }}</textarea><br><br>
+
+        <label for="publication_date">Publication Date:</label>
+        <input type="date" id="publication_date" name="publication_date" value="{{ book.publication_date|date('Y-m-d') }}"><br><br>
+
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <a href="{{ url('book-list') }}">Cancel</a>
+{% endblock %}

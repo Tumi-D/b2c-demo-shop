@@ -1,33 +1,55 @@
 <?php
-namespace Pyz\Zed\Book\Business;
+
+namespace Pyz\Zed\Book\Communication\Controller;
 
 use Generated\Shared\Transfer\BookTransfer;
-use Spryker\Zed\Kernel\Business\AbstractFacade;
+use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 
-class BookFacade extends AbstractFacade implements BookFacadeInterface
+class IndexController extends AbstractController
 {
-    public function createBook(BookTransfer $bookTransfer): void
+    public function indexAction()
     {
-        $this->getFactory()->createBookWriter()->create($bookTransfer);
+        $bookCollection = $this->getFacade()->getAllBooks();
+        return $this->viewResponse(['bookCollection' => $bookCollection]);
     }
 
-    public function updateBook(BookTransfer $bookTransfer): void
+    public function createAction(Request $request)
     {
-        $this->getFactory()->createBookWriter()->update($bookTransfer);
+        $form = $this->getFactory()->createBookForm()->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $bookTransfer = $form->getData();
+            $this->getFacade()->createBook($bookTransfer);
+
+            return $this->redirectResponse('/book');
+        }
+
+        return $this->viewResponse(['form' => $form->createView()]);
     }
 
-    public function deleteBookById(int $idBook): void
+    public function updateAction(Request $request)
     {
-        $this->getFactory()->createBookWriter()->delete($idBook);
+        $idBook = $request->query->getInt('id');
+        $bookTransfer = $this->getFacade()->getBookById($idBook);
+
+        $form = $this->getFactory()->createBookForm($bookTransfer)->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $bookTransfer = $form->getData();
+            $this->getFacade()->updateBook($bookTransfer);
+
+            return $this->redirectResponse('/book');
+        }
+
+        return $this->viewResponse(['form' => $form->createView()]);
     }
 
-    public function getBookById(int $idBook): BookTransfer
+    public function deleteAction(Request $request)
     {
-        return $this->getFactory()->createBookReader()->getById($idBook);
-    }
+        $idBook = $request->query->getInt('id');
+        $this->getFacade()->deleteBookById($idBook);
 
-    public function getAllBooks(): array
-    {
-        return $this->getFactory()->createBookReader()->getAll();
+        return $this->redirectResponse('/book');
     }
 }

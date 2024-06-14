@@ -1,0 +1,20 @@
+{% extends '@Book/Layout/default.twig' %}
+
+{% block book_content %}
+    <h1>Create Book</h1>
+
+    <form method="post" action="{{ url('book-create') }}">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea><br><br>
+
+        <label for="publication_date">Publication Date:</label>
+        <input type="date" id="publication_date" name="publication_date"><br><br>
+
+        <button type="submit">Save</button>
+    </form>
+
+    <a href="{{ url('book-list') }}">Cancel</a>
+{% endblock %}

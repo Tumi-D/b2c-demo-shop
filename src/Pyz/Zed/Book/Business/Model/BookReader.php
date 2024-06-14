@@ -1,9 +1,5 @@
 <?php
-namespace Pyz\Zed\Book\Business\Model;
-
 use Generated\Shared\Transfer\BookTransfer;
-use Orm\Zed\Book\Persistence\PyzBookQuery;
-
 class BookReader
 {
     public function getById(int $idBook): BookTransfer

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<database name="zed"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd"
+          namespace="Pyz\Zed\Book\Persistence\Propel\Schema">
+
+    <table name="pyz_book" idMethod="native">
+        <column name="id_book" type="INTEGER" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="VARCHAR" size="255" required="true"/>
+        <column name="description" type="LONGVARCHAR" required="true"/>
+        <column name="publication_date" type="TIMESTAMP"/>
+        <behavior name="timestampable"/>
+    </table>
+
+</database>

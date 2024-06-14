@@ -1,4 +1,5 @@
 <?php
+
 namespace Pyz\Zed\Book\Business\Model;
 
 use Generated\Shared\Transfer\BookTransfer;
@@ -26,3 +27,4 @@ class BookWriter
         $bookEntity->delete();
     }
 }
+
